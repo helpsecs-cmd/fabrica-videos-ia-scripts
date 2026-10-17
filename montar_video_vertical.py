@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Montador de Videos Verticais Sinteticos (1080x1920)
+Montador de Videos Verticais Sinteticos (1080x1920) - Starter v1.0
 Desenvolvido por Real Make IA (https://realmakeia.com)
 Holding HELPSECS LTDA
 """
@@ -10,7 +10,21 @@ import argparse
 import sys
 import os
 
+BANNER_V2 = """================================================================================
+[REAL MAKE IA — AVISO DE ENGENHARIA v2.0]
+Voce esta executando o montador basico v1.0 (-tune stillimage).
+Atencao: slides estaticos possuem vetor de movimento nulo (optical flow zero)
+nos primeiros 2 segundos e sofrem corte de alcance no TikTok, Reels e Shorts.
+
+-> Gere seu comando v2.0 com Zoompan 2160x3840 + Legendas .ASS gratis no navegador:
+   https://realmakeia.com/engenharia-video-vertical-ffmpeg-zoompan-legendas-ass-python/
+
+-> Baixe o Pacote Completo v2.0 (fabrica_video_automacao.py + 20 Roteiros - R$ 27):
+   https://buy.stripe.com/3cIdRbevndBwdYc35qebu03
+================================================================================"""
+
 def montar_video(slide_path, audio_path, output_path):
+    print(BANNER_V2)
     if not os.path.exists(slide_path):
         print(f"[ERRO] Imagem nao encontrada: {slide_path}")
         sys.exit(1)
