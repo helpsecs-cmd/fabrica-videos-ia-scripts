@@ -1,55 +1,40 @@
-# ⚡ Fábrica de Vídeos Curtos com IA (Automação em Lote)
+# 🎬 Fábrica de Vídeos Curtos com IA (Python + FFmpeg + ElevenLabs)
 
-[![Licença MIT](https://img.shields.io/badge/licenca-MIT-green.svg)](LICENSE)
-[![Python](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/)
-[![Status](https://img.shields.io/badge/status-produção-brightgreen.svg)]()
-[![Processado por](https://img.shields.io/badge/gateway-Stripe%20Pix-6772e5.svg)](https://buy.stripe.com/fZu7sN5YR7d8aM0eO8ebu02)
-
-Scripts abertos de automação desenvolvidos pelo laboratório **[Real Make IA](https://realmakeia.com)** (uma iniciativa oficial **HELPSECS LTDA**).
-
-Este repositório contém a lógica de linha de comando para renderizar vídeos verticais sintéticos (1080x1920) para TikTok, Instagram Reels e YouTube Shorts por um custo marginal de aproximadamente **R$ 0,22 por vídeo**, combinando narração de voz neural (ElevenLabs / Whisper) com imagens estáticas verticais em alta definição via FFmpeg.
+> 🔥 **NOVO (Outubro/2026 — Atualização Industrial v2.0 Anti-Jitter):**
+> Descobrimos em produção por que vídeos gerados com `-loop 1 -tune stillimage` sofrem queda brutal de retenção nos primeiros 2 segundos (*optical flow zero*) e como corrigimos isso com **Super-Amostragem 2160x3840 (`zoompan` a 30fps) + Queima Nativa de Legendas Dinâmicas `.ASS` (`libass`)**:
+> - 🛠️ **[Acessar Dossiê de Engenharia + Compilador Online Grátis (.ASS + FFmpeg Zoompan)](https://realmakeia.com/engenharia-video-vertical-ffmpeg-zoompan-legendas-ass-python/?utm_source=github&utm_medium=readme&utm_campaign=fabrica_repo)**
+> - 🧮 **[Calculadora Interativa de Custos (R$ 0,22/vídeo) + Workshop Prático](https://realmakeia.com/criar-videos-curtos-ia-sem-aparecer/?utm_source=github&utm_medium=readme&utm_campaign=fabrica_repo)**
+> - ⚡ **[Baixar o Pacote Completo v2.0 (`fabrica_video_automacao.py` + 20 Roteiros Testados de Alta Retenção — R$ 27,00 via Pix/Stripe)](https://buy.stripe.com/3cIdRbevndBwdYc35qebu03)**
 
 ---
 
-## 🏗️ Como Funciona o Pipeline
+## O Problema dos Geradores de Vídeo SaaS
 
-`
-[Roteiro Viral] ➔ [Voz Neural MP3] + [3 Slides 1080x1920] ➔ [Script FFmpeg] ➔ [Vídeo Final MP4 60fps]
-`
+Plataformas SaaS de geração de vídeos cobram entre **R$ 150 e R$ 390 por mês** apenas para executar um wrapper básico de FFmpeg sobre uma API de voz neural. Neste repositório disponibilizamos a prova de conceito aberta (`v1.0`) e documentamos a arquitetura completa (`v2.0`) que opera a **R$ 0,22 por vídeo renderizado**.
 
----
+### Comparativo de Engenharia (`v1.0 Starter` vs `v2.0 Industrial`)
 
-## 🚀 Como Executar Localmente
-
-### 1. Pré-requisitos
-- Python 3.10+
-- FFmpeg instalado no sistema operacional
-
-### 2. Clonar o repositório
-`ash
-git clone https://github.com/helpsecs-cmd/fabrica-videos-ia-scripts.git
-cd fabrica-videos-ia-scripts
-`
-
-### 3. Executar o montador
-`ash
-python montar_video_vertical.py --slide imagem_vertical.png --audio narracao.mp3 --output video_final.mp4
-`
+| Recurso Técnico | `montar_video_vertical.py` (v1.0 Aberto neste Repo) | `fabrica_video_automacao.py` (Pacote Completo v2.0) |
+| :--- | :--- | :--- |
+| **Vetor de Movimento (Optical Flow)** | Estático (`-loop 1 -tune stillimage`) | **Ken Burns Contínuo 2x (`2160x3840 -> 1080x1920` a 30fps sem trepidação subpixel)** |
+| **Motor de Legendas** | Sem legenda nativa | **Gerador Automático `.ASS` (`libass`) com queima nativa e caixa semi-opaca** |
+| **Sincronia de Áudio/Vídeo** | `-shortest` simples | **Leitura exata de duração via `ffprobe` + cálculo automático de frames (`d = ceil(seg * 30)`)** |
+| **Roteiros Inclusos** | — | **20 Roteiros Integrais Validados com Marcação de Gancho e Retenção** |
 
 ---
 
-## 📦 Pacote Completo de Roteiros Testados (Comercial)
+## Como Executar o Script Básico (`v1.0`)
 
-Para criadores e empresas que desejam a esteira completa pronta para monetizar:
-- **20 Roteiros Prontos de Alta Retenção** (formatados para canais escuros / documentários / curiosidades).
-- **Scripts de Automação de Disparo em Lote**.
-- **Prompts calibrados para Midjourney / Leonardo / DALL-E**.
+```bash
+pip install -r requirements.txt
+python montar_video_vertical.py --slide cena_vertical.jpg --audio narracao.mp3 --output video_final.mp4
+```
 
-👉 **[Adquira o Pacote Completo por R$ 27,00 (Pix Instantâneo ou Cartão)](https://buy.stripe.com/fZu7sN5YR7d8aM0eO8ebu02)**  
-*Download imediato do arquivo .ZIP processado com segurança pela HELPSECS LTDA via Stripe.*
+## Dossiês Técnicos & Outros Experimentos Reais
+
+1. **[Engenharia de Vídeo Vertical em Python: FFmpeg Zoompan (2160x3840) + Legendas .ASS](https://realmakeia.com/engenharia-video-vertical-ffmpeg-zoompan-legendas-ass-python/?utm_source=github&utm_medium=readme&utm_campaign=fabrica_repo)**
+2. **[Stripe no WhatsApp sem VPS: Alertas de Vendas em 184ms com Cloudflare Pages Functions](https://realmakeia.com/webhook-stripe-whatsapp-serverless/?utm_source=github&utm_medium=readme&utm_campaign=fabrica_repo)**
+3. **[Estudo de Caso: O que aconteceu quando submetemos 37 artigos gerados por 5 IAs ao Google AdSense](https://realmakeia.com/reprovacao-adsense-37-artigos-ia/?utm_source=github&utm_medium=readme&utm_campaign=fabrica_repo)**
 
 ---
-
-## 🌐 Tutorial Completo & Calculadora de Custos
-Leia o estudo de caso completo e utilize a calculadora interativa em:  
-👉 **[https://realmakeia.com/criar-videos-curtos-ia-sem-aparecer/](https://realmakeia.com/criar-videos-curtos-ia-sem-aparecer/)**
+*Mantido por [Real Make IA](https://realmakeia.com) · HELPSECS LTDA.*
