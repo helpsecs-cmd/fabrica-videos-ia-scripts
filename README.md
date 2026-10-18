@@ -1,3 +1,12 @@
+<!-- CTA-REALMAKEIA-INI -->
+> **⚡ Quer isto funcionando na sua máquina em 10 minutos?**
+> O código deste repositório está empacotado, testado e documentado no **Kit Fábrica de Vídeos v2.0** — R$ 27, pagamento único, entrega imediata.
+>
+> ### **[→ Comprar Kit Fábrica de Vídeos v2.0 por R$ 27](https://buy.stripe.com/3cIdRbevndBwdYc35qebu03)**
+>
+> [Dossiês técnicos e documentação](https://realmakeia.com/criar-videos-curtos-ia-sem-aparecer/?utm_source=github&utm_medium=readme&utm_campaign=fabrica-videos-ia-scripts) · Dúvidas no [WhatsApp](https://wa.me/5547999835120)
+<!-- CTA-REALMAKEIA-FIM -->
+
 # 🎬 Fábrica de Vídeos Curtos com IA (Python + FFmpeg + ElevenLabs)
 
 > 🔥 **NOVO (Outubro/2026 — Atualização Industrial v2.0 Anti-Jitter):**
